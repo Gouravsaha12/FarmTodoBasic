@@ -1,0 +1,170 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "Todo",
+        "importPath": "schemas",
+        "description": "schemas",
+        "isExtraImport": true,
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Todo",
+        "importPath": "schemas",
+        "description": "schemas",
+        "isExtraImport": true,
+        "detail": "schemas",
+        "documentation": {}
+    },
+    {
+        "label": "motor.motor_asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "motor.motor_asyncio",
+        "description": "motor.motor_asyncio",
+        "detail": "motor.motor_asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_one_todo",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "fetch_all_todo",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "remove_todo",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "update_todo",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "create_one_todo",
+        "importPath": "database",
+        "description": "database",
+        "isExtraImport": true,
+        "detail": "database",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "client",
+        "kind": 5,
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "peekOfCode": "client = motor.motor_asyncio.AsyncIOMotorClient(os.getenv(\"MONGODB_CONNECTION_STRING\"))\ndatabase = client.TodoList\nTodos = database.Todos\nasync def fetch_one_todo(title):\n    document = await Todos.find_one({\"title\": title})\n    return document\nasync def fetch_all_todo():\n    todos = []\n    cursor = Todos.find({})\n    async for document in cursor:",
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "database",
+        "kind": 5,
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "peekOfCode": "database = client.TodoList\nTodos = database.Todos\nasync def fetch_one_todo(title):\n    document = await Todos.find_one({\"title\": title})\n    return document\nasync def fetch_all_todo():\n    todos = []\n    cursor = Todos.find({})\n    async for document in cursor:\n        todos.append(Todo(**document))",
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "Todos",
+        "kind": 5,
+        "importPath": "backend.database",
+        "description": "backend.database",
+        "peekOfCode": "Todos = database.Todos\nasync def fetch_one_todo(title):\n    document = await Todos.find_one({\"title\": title})\n    return document\nasync def fetch_all_todo():\n    todos = []\n    cursor = Todos.find({})\n    async for document in cursor:\n        todos.append(Todo(**document))\n    return todos",
+        "detail": "backend.database",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "app = FastAPI()\norigins = [\"http://localhost:3000\"]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n@app.get(\"/todo/all\")",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "origins",
+        "kind": 5,
+        "importPath": "backend.main",
+        "description": "backend.main",
+        "peekOfCode": "origins = [\"http://localhost:3000\"]\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=origins,\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],\n)\n@app.get(\"/todo/all\")\nasync def get_all_todo():",
+        "detail": "backend.main",
+        "documentation": {}
+    },
+    {
+        "label": "Todo",
+        "kind": 6,
+        "importPath": "backend.schemas",
+        "description": "backend.schemas",
+        "peekOfCode": "class Todo(BaseModel):\n    title: str\n    description: str",
+        "detail": "backend.schemas",
+        "documentation": {}
+    }
+]
