@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from schemas import Todo
+from schemas import Todo, UpdateTodoBody
 
 from database import (
     fetch_one_todo,
@@ -13,7 +13,7 @@ from database import (
 
 app = FastAPI()
 
-origins = ["http://localhost:3000"]
+origins = ["http://localhost:5173"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -44,8 +44,8 @@ async def add_todo(todo:Todo):
     raise HTTPException(404, f"there is a problem while creating")
 
 @app.put("/todo/update/{title}")
-async def update_todo_route(title: str, desc: str):
-    response = await update_todo(title, desc)
+async def update_todo_route(title: str, body: UpdateTodoBody):
+    response = await update_todo(title, body.desc)
     if response:
         return response
     raise HTTPException(404, f"there is a problem while updating")
